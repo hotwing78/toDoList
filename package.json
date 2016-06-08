@@ -1,0 +1,27 @@
+{
+  "name": "to-do-list",
+  "version": "0.0.1",
+  "description": "My first to do list app",
+  "main": "main.js",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.2.4",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "node-sass -w styles.scss styles.css",
+    "start": "npm run sass"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hotwing78/toDoList.git"
+  },
+  "author": "Damon Wingo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hotwing78/toDoList/issues"
+  },
+  "homepage": "https://github.com/hotwing78/toDoList#readme"
+}
