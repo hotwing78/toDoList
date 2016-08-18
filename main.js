@@ -3,7 +3,7 @@ $(document).ready(function(){
 })
 
 var toDo = {
-   url: 'http://tiny-tiny.herokuapp.com/collections/toDoListWingo',
+   url: 'http://tiny-tiny.herokuapp.com/collections/toDoListWingoA',
 
    listItems: [],//end listItems
    doneItems: [],//end doneItems
@@ -23,10 +23,14 @@ var toDo = {
      $('.add').on('click', function(event){
          event.preventDefault();
          var newToDoItem = {
-           content: $('textarea').val()
+           content: $('textarea').val(),
           };
-          $('textarea').val('');
           toDo.createListItem(newToDoItem);
+          newToDoItem._id = '12345678';
+          $('textarea').val('');
+          var htmlStr = toDo.htmlGenerator(toDoTemplates.toDoItemTemplate,newToDoItem)
+          $('.listItems').append(htmlStr);
+
       }),
 
       //delete item
@@ -34,6 +38,8 @@ var toDo = {
          event.preventDefault();
          if ( $("div.listItems >.checkbox > input" ).is( ":checked" ) ) {
          var itemId = $("div.listItems >.checkbox > input" ).parent().attr('data-id');
+         var text = $('.checkbox').text();
+         console.log(text);
          console.log(itemId);
          toDo.deleteListItem(itemId);
        }
@@ -49,11 +55,13 @@ var toDo = {
             data: item,
             success: function(data) {
               console.log("WE CREATED SOMETHING", data);
-              var htmlStr = toDo.htmlGenerator(toDoTemplates.toDoItemTemplate,data)
-              toDo.listItems.push(data);
-              $('.listItems').append(htmlStr);
-
-            },
+                toDo.listItems.push(data);
+                $('.listItems').html('');
+                toDo.listItems.forEach(function(element,idx) {
+                  var htmlStr = toDo.htmlGenerator(toDoTemplates.toDoItemTemplate,element);
+                  $('.listItems').append(htmlStr)
+                    })
+                },
             error: function(err) {
               console.error("Damn it!", err);
             }
@@ -70,8 +78,8 @@ var toDo = {
             data.forEach(function(element,idx) {
               var htmlStr = toDo.htmlGenerator(toDoTemplates.toDoItemTemplate,element);
               $('.listItems').append(htmlStr)
-              toDo.listItems.push(element);
             });
+              toDo.listItems = data;
           },
           error: function(err) {
             console.error("Damn it!", err);
@@ -85,6 +93,7 @@ var toDo = {
           url: deleteItem,
           method: "DELETE",
           success: function(data){
+            toDo.doneItems.push(data);
             console.log("Get that outta here!", data);
             toDo.getListItems();
           },
