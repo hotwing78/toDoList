@@ -20,11 +20,11 @@ var toDo = {
     events: function() {
 
         //add to do item
-        $('form').on('submit', function(event) {
+        $('#newToDo').on('submit', function(event) {
                 event.preventDefault();
-                if ($('input').val() !== '') {
+                if ($('input #createTo').val() !== '') {
                     var newToDoItem = {
-                        content: $('input').val(),
+                        content: $('input #createTo').val(),
                     };
                     toDo.createListItem(newToDoItem);
                     newToDoItem._id = '12345678';
@@ -45,7 +45,16 @@ var toDo = {
                     console.log(itemId);
                     toDo.deleteListItem(itemId);
                 }
-            }) //end delete item
+            }), //end delete item
+
+            //edit item
+            $('.form-temp').on('submit',function(){
+              event.preventDefault;
+              var itemId = $("div.listItems >.checkbox > input").parent().attr('data-id');
+              var newText = $(this).find('input').val();
+              console.log(newText);
+              toDo.editListItem(itemId,newText);
+            })
 
     }, //end of events
 
@@ -105,7 +114,17 @@ var toDo = {
         });
     }, // end deleteListItems
 
-
+    editListItem:function(itemId,data){
+      var editItem = todo.url+ '/'+itemId;
+      $ajax({
+        url:editItem,
+        data:data,
+        method:'PUT',
+        success: function(data){
+          console.log('we changed something')
+        }
+      })
+    },
     templification: function(template) {
         return _.template(template);
     },

@@ -1,32 +1,67 @@
 body {
-  background-color: #92591e;
-  color: #fff;
-  font-family: 'Indie Flower', cursive; }
-
-.form-group {
-  margin-left: 9%;
-  display: inline-block;
-  position: fixed;
-  bottom: 53px; }
-
+    background-color: #f2f2f2;
+    color: #1c175d;
+    font-family: 'Indie Flower', sans-serif;
+    font-weight: 300;
+}
+h1 {
+    font-weight: 100;
+    font-size: 8rem;
+}
+.form-main {
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+}
+.form-temp {
+    margin-top: 5px;
+}
+.check-circle {
+    height: 30px;
+    width: 30px;
+    border: 1px solid;
+    border-radius: 100%;
+    vertical-align: middle;
+    display: inline-block;
+}
+.completed .check-circle {
+    color: #7BBDAD;
+    background-image: url(../images/checkmark.png);
+    background-repeat: no-repeat;
+    background-size: 72%;
+    background-position-x: 5px;
+    background-position-y: 4px;
+    border-color: #7BBDAD;
+}
+.completed input {
+    color: #E6E6E6;
+    text-decoration: line-through;
+}
 .input-area {
-  border-radius: 14px; }
-
+    border: none;
+    border-color: transparent;
+    font-size: 2rem;
+    width: 50%;
+    font-weight: 300;
+    padding: 1%;
+    color: #4D4D4D;
+    vertical-align: middle;
+}
 button {
-  width: 30%;
-  margin-top: 5px;
-  margin-left: 10%;
-  }
-
+    width: 30%;
+    margin-top: 5px;
+    margin-left: 10%;
+}
 .listItems {
-  margin-left: 45%;
-  margin-top: 15px;
-  text-align: justify;
-  width: 52%;
-  height: 119px; }
-
+    margin-top: 15px;
+    margin-left: 23%;
+    text-align: justify;
+    width: 100%;
+    height: auto;
+}
 .hidden {
-  display: none; }
-
+    display: none;
+}
 .clear {
-  clear: both; }
+    clear: both;
+}

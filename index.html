@@ -9,16 +9,16 @@
     <link rel="stylesheet" href="styles.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <div class="form-group">
+    <div class="form-main">
       <h1>To-Do <small>List</small></h1>
-      <form role="form">
-          <input class = 'input-area' type="text" name="name" value="">
+      <form id = 'newToDo'>
+        <input type="text" class= 'input-area' id= 'createTo' placeholder = 'What do you need to do?' readonly="true" onclick="this.readOnly=false">
       </form>
-      <button type="button" class="btn btn btn-primary add">Add</button>
+      <div class = 'listItems'></div>
       <button type="button" class="btn btn btn-primary done">Done</button>
     </div>
 
-    <div class = 'listItems'></div>
+
 
     <script src="node_modules/jquery/dist/jquery.js" charset="utf-8"></script>
     <script src="node_modules/underscore/underscore.js" charset="utf-8"></script>
